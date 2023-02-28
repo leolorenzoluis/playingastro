@@ -1,6 +1,5 @@
 import { CollectionEntry, getCollection } from "astro:content";
 import lunr from "lunr";
-import { URL } from "url";
 
 type VideoId = Pick<CollectionEntry<"videos">, "id">["id"];
 
