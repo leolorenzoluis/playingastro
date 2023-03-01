@@ -1,56 +1,85 @@
 ---
+import BaseHead from '../components/BaseHead.astro';
+import Navigation from '../components/Navigation.astro';
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="max-w-5xl mx-auto">
-		<header class="bg-indigo-600 mb-3">
-			<nav class="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Top">
-				<div class="flex w-full items-center justify-between border-b border-indigo-500 py-6 lg:border-none">
-					<div class="flex items-center">
-						<a href="/">
-							<span class="sr-only">Blue Collar Coder</span>
-						</a>
-						<div class="ml-10 hidden space-x-8 lg:block">
-							<a href="/" class="text-base font-medium text-white hover:text-indigo-50">Home</a>
-							<a href="/search" class="text-base font-medium text-white hover:text-indigo-50">Search</a>
-							<a href="/another" class="text-base font-medium text-white hover:text-indigo-50">Another</a>
-						</div>
-					</div>
-				</div>
-				<div class="flex flex-wrap justify-center gap-x-6 py-4 lg:hidden">
-					<a href="/" class="text-base font-medium text-white hover:text-indigo-50">Home</a>		
-					<a href="/search" class="text-base font-medium text-white hover:text-indigo-50">Search</a>
-				</div>
-			</nav>
-		</header>
-		
-		<slot />
-	</body>
+<html
+  lang="en"
+  class="scroll-smooth selection:bg-accent-500 selection:text-white no-touchevents hydrated"
+>
+  <head>
+    <BaseHead />
+  </head>
+  <body class="mx-auto">
+    <Navigation />
+    <header class="bg-indigo-600 mb-3">
+      <nav class="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Top">
+        <div
+          class="flex w-full items-center justify-between border-b border-indigo-500 py-6 lg:border-none"
+        >
+          <div class="flex items-center">
+            <a href="/">
+              <span class="sr-only">Blue Collar Coder</span>
+            </a>
+            <div class="ml-10 hidden space-x-8 lg:block">
+              <a
+                href="/"
+                class="text-base font-medium text-white hover:text-indigo-50"
+                >Home</a
+              >
+              <a
+                href="/search"
+                class="text-base font-medium text-white hover:text-indigo-50"
+                >Search</a
+              >
+              <a
+                href="/another"
+                class="text-base font-medium text-white hover:text-indigo-50"
+                >Another</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-6 py-4 lg:hidden">
+          <a
+            href="/"
+            class="text-base font-medium text-white hover:text-indigo-50"
+            >Home</a
+          >
+          <a
+            href="/search"
+            class="text-base font-medium text-white hover:text-indigo-50"
+            >Search</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <slot />
+    <style is:global>
+      :root {
+        --accent: 124, 58, 237;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          #da62c4 30%,
+          white 60%
+        );
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background-color: #f6f6f6;
+      }
+      code {
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+      }
+    </style>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
