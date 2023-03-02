@@ -10,6 +10,7 @@ const recentVideos = [...allVideos]
 import VideoGrid from '../components/VideoGrid';
 import { AstroSeo } from '@astrolib/seo';
 import Hero from '../components/Hero.astro';
+import Testimonial from '../components/Testimonial.astro';
 ---
 
 <AstroSeo
@@ -48,6 +49,7 @@ import Hero from '../components/Hero.astro';
 />
 <Layout title="Welcome to Astro.">
 	<Hero />
+	<Testimonial />
 	<VideoGrid videos={recentVideos} />
 	<main>
 		<h1>Welcome to <span class="text-gradient">Astra aao</span></h1>
