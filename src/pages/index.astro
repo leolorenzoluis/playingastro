@@ -11,6 +11,8 @@ import VideoGrid from '../components/VideoGrid';
 import { AstroSeo } from '@astrolib/seo';
 import Hero from '../components/Hero.astro';
 import Testimonial from '../components/Testimonial.astro';
+import Pricing from '../components/Pricing.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <AstroSeo
@@ -50,6 +52,7 @@ import Testimonial from '../components/Testimonial.astro';
 <Layout title="Welcome to Astro.">
 	<Hero />
 	<Testimonial />
+	<Pricing />
 	<VideoGrid videos={recentVideos} />
 	<main>
 		<h1>Welcome to <span class="text-gradient">Astra aao</span></h1>
@@ -81,6 +84,7 @@ import Testimonial from '../components/Testimonial.astro';
 			/>
 		</ul>
 	</main>
+	<Footer />
 </Layout>
 
 <style>
