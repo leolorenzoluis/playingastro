@@ -5,8 +5,8 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 const allVideos = await getCollection('videos');
 const recentVideos = [...allVideos]
-	.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
-	.slice(0, 10);
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 10);
 import VideoGrid from '../components/VideoGrid';
 import { AstroSeo } from '@astrolib/seo';
 import Hero from '../components/Hero.astro';
@@ -14,122 +14,124 @@ import Testimonial from '../components/Testimonial.astro';
 import Pricing from '../components/Pricing.astro';
 import Footer from '../components/Footer.astro';
 import Navigation from '../components/Navigation.astro';
+import Cta from '../components/Cta.astro';
 ---
 
 <AstroSeo
-	title="Home"
-	description="Your site description goes here"
-	canonical="https://www.tbd.com"
-	openGraph={{
-		url: 'https://www.tbd.com',
-		title: 'Open Graph Title',
-		description: 'Open Graph Description',
-		images: [
-			{
-				url: 'https://www.tbd.com/opengraph/social-og.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'Social open graph',
-				type: 'image/jpeg',
-			},
-			{
-				url: 'https://www.tbd.com/opengraph/twitter-og.jpg',
-				width: 4096,
-				height: 4096,
-				alt: 'Twitter open graph',
-				type: 'image/jpeg',
-			},
-			{ url: 'https://www.tbd.com/opengraph/social-og.jpg' },
-			{ url: 'https://www.tbd.com/opengraph/twitter-og.jpg' },
-		],
-		site_name: 'YourSitesName',
-	}}
-	twitter={{
-		handle: '@meh',
-		site: '@meh',
-		cardType: 'summary_large_image',
-	}}
+  title="Home"
+  description="Your site description goes here"
+  canonical="https://www.tbd.com"
+  openGraph={{
+    url: 'https://www.tbd.com',
+    title: 'Open Graph Title',
+    description: 'Open Graph Description',
+    images: [
+      {
+        url: 'https://www.tbd.com/opengraph/social-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Social open graph',
+        type: 'image/jpeg',
+      },
+      {
+        url: 'https://www.tbd.com/opengraph/twitter-og.jpg',
+        width: 4096,
+        height: 4096,
+        alt: 'Twitter open graph',
+        type: 'image/jpeg',
+      },
+      { url: 'https://www.tbd.com/opengraph/social-og.jpg' },
+      { url: 'https://www.tbd.com/opengraph/twitter-og.jpg' },
+    ],
+    site_name: 'YourSitesName',
+  }}
+  twitter={{
+    handle: '@meh',
+    site: '@meh',
+    cardType: 'summary_large_image',
+  }}
 />
 <Layout title="Welcome to Astro.">
-	<Navigation />
-	<Hero />
-	<Testimonial />
-	<Pricing />
-	<VideoGrid videos={recentVideos} />
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astra aao</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br
-			/>
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-	<Footer />
+  <Navigation />
+  <Hero />
+  <Testimonial />
+  <Pricing />
+  <Cta />
+  <VideoGrid videos={recentVideos} />
+  <main>
+    <h1>Welcome to <span class="text-gradient">Astra aao</span></h1>
+    <p class="instructions">
+      To get started, open the directory <code>src/pages</code> in your project.<br
+      />
+      <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
+    </p>
+    <ul role="list" class="link-card-grid">
+      <Card
+        href="https://docs.astro.build/"
+        title="Documentation"
+        body="Learn how Astro works and explore the official API docs."
+      />
+      <Card
+        href="https://astro.build/integrations/"
+        title="Integrations"
+        body="Supercharge your project with new frameworks and libraries."
+      />
+      <Card
+        href="https://astro.build/themes/"
+        title="Themes"
+        body="Explore a galaxy of community-built starter themes."
+      />
+      <Card
+        href="https://astro.build/chat/"
+        title="Community"
+        body="Come say hi to our amazing Discord community. ❤️"
+      />
+    </ul>
+  </main>
+  <Footer />
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 60ch;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .instructions code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
 </style>
