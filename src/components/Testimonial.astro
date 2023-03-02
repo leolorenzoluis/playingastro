@@ -8,6 +8,7 @@ function batchItems(arr, chunkSize) {
   return res;
 }
 
+import Rive from '../components/RiveCanvas';
 const testimonials = [
   {
     name: 'Yash Jayme',
@@ -65,7 +66,7 @@ const batches: any[] = batchItems(testimonials, 2);
     </div>
     <ul
       role="list"
-      class="grid max-w-2xl grid-cols-1 gap-6 mx-auto mt-16 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
+      class="grid max-w-2xl grid-cols-1 gap-6 mx-auto mt-16 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-4">
       {
         batches.map((batch) => {
           return (
@@ -110,6 +111,8 @@ const batches: any[] = batchItems(testimonials, 2);
           );
         })
       }
+
+      <Rive src="/server.riv" client:only />
     </ul>
   </div>
 </section>

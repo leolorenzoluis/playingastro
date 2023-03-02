@@ -17,6 +17,7 @@
 		"@astrojs/tailwind": "^3.0.1",
 		"@astrolib/seo": "^0.3.0",
 		"@cloudflare/workers-types": "^4.20230221.0",
+		"@rive-app/canvas": "^1.0.101",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/line-clamp": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.8",

@@ -15,6 +15,7 @@ import Pricing from '../components/Pricing.astro';
 import Footer from '../components/Footer.astro';
 import Navigation from '../components/Navigation.astro';
 import Cta from '../components/Cta.astro';
+import Rive from '../components/RiveCanvas';
 ---
 
 <AstroSeo
@@ -53,6 +54,7 @@ import Cta from '../components/Cta.astro';
 />
 <Layout title="Welcome to Astro.">
   <Navigation />
+  <Rive src="/helix.riv" client:only />
   <Hero />
   <Testimonial />
   <Pricing />
