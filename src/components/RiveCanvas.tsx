@@ -12,6 +12,6 @@ export default function ({src, classNames = ""}) {
             autoplay: true
         })
     });
-    return (<canvas ref={ref} id="canvas" width="500" height="500" class={classNames}></canvas>
+    return (<canvas ref={ref} id="canvas" width="400" height="400" class={classNames}></canvas>
     );
   }
