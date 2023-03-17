@@ -1,5 +1,14 @@
 import { z, defineCollection } from 'astro:content';
 
+
+const blogCollection = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        tags: z.array(z.string()).optional(),
+        publishedAt: z.date(),
+    })
+})
+
 const videoSchema = defineCollection({
     schema: z.object({
         title: z.string(),
@@ -29,4 +38,5 @@ const videoSchema = defineCollection({
 
 export const collections = {
     videos: videoSchema,
+    blog: blogCollection,
 }
