@@ -1,30 +1,27 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+export const prerender = true;
 import { getCollection } from 'astro:content';
-const blogEntries = await getCollection('blogs');
-const colors = ['blue', 'purple', 'pink', 'red', 'orange'];
+export async function getStaticPaths({ paginate }) {
+  let blogEntries = await getCollection('blogs');
+  blogEntries = Array.from({ length: 100 }, () => [...blogEntries]).flat();
+  // Generate pages from our array of astronauts, with 2 to a page
+  return paginate(blogEntries, { pageSize: 18 });
+}
 
-let arr2 = Array.from({ length: 100 }, () => [...blogEntries]).flat();
+const colors = ['blue', 'purple', 'pink', 'red', 'orange'];
+// All paginated data is passed on the "page" prop
+const { page } = Astro.props;
 ---
 
+<!--Display the current page number. Astro.params.page can also be used!-->
 <Layout title="blog">
   <Navigation />
-  <h1
-    class="text-5xl p-4 text-center font-bold bg-gradient-to-r from-purple via-orange to-blue bg-clip-text text-transparent">
-    A Guide to Adding Gradients with Tailwind CSS
-  </h1><h1
-    class="text-5xl p-4 text-center font-bold bg-gradient-to-r from-orange to-blue">
-    A Guide to Adding Gradients with Tailwind CSS
-  </h1>
-  <h1 class="text-4xl font-bold text-blue">Hello World</h1>
-  <div class="text-3xl font-bold text-white text-stroke text-stroke-black">
-    Hello, World!
-  </div>
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 lg:px-8 xl:px-12">
     {
-      arr2.map((entry) => {
+      page.data.map((entry) => {
         // const fromColor = colors[Math.floor(Math.random() * colors.length)];
         // const toColor = colors[Math.floor(Math.random() * colors.length)];
         const randomIndex = () => Math.floor(Math.random() * colors.length);
@@ -65,5 +62,32 @@ let arr2 = Array.from({ length: 100 }, () => [...blogEntries]).flat();
         );
       })
     }
+  </div>
+  <div class="flex justify-center items-center mt-8">
+    <div class="flex">
+      <span class="text-red font-medium text-lg sm:text-xl md:text-2xl mr-4">
+        Page {page.currentPage} of {page.lastPage}
+      </span>
+      <!-- Previous Link -->
+      {
+        page.url.prev ? (
+          <a
+            href={page.url.prev}
+            class="text-blue font-medium mr-4 text-lg sm:text-xl md:text-2xl">
+            Previous
+          </a>
+        ) : null
+      }
+      <!-- Next Link -->
+      {
+        page.url.next ? (
+          <a
+            href={page.url.next}
+            class="text-blue font-medium text-lg sm:text-xl md:text-2xl">
+            Next
+          </a>
+        ) : null
+      }
+    </div>
   </div>
 </Layout>
