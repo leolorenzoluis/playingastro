@@ -5,19 +5,12 @@ import { getCollection } from 'astro:content';
 import Navigation from '../../components/Navigation.astro';
 import Layout from '../../layouts/Layout.astro';
 // 1. Generate a new path for every collection entry
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths() {
   const blogEntries = await getCollection('blogs');
-  return paginate(
-    blogEntries.map(
-      (entry) => ({
-        params: { slug: entry.slug },
-        props: { entry },
-      }),
-      {
-        pageSize: 2,
-      }
-    )
-  );
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 // 2. When it's time to render, you can get the entry directly from the prop
 const { entry } = Astro.props;
@@ -26,7 +19,6 @@ const { Content } = await entry.render();
 
 <Layout title={entry.data.title}>
   <Navigation />
-  <h1>Page {entry.currentPage} of {entry.totalPages}</h1>
   <div
     class="max-w-prose mx-auto bg-white rounded-xl shadow-md overflow-hidden xl:max-w-screen-2xl">
     <article
