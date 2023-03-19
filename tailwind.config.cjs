@@ -3,6 +3,17 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+
+  safelist: [
+    {
+      pattern: /^from-/,
+    },
+    {
+      pattern: /^to-/,
+    },
+    // Add additional regex here for custom color names
+  ],
+
   theme: {
     fontSize: {
       xs: [
@@ -95,6 +106,8 @@ module.exports = {
         red: '#db6172',
         orange: '#d39674',
         black: '#141521',
+        white: '#ffffff',
+        transparent: 'transparent',
 
         accent: {
           50: '#EBEDFF',

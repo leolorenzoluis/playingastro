@@ -1,23 +1,59 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
 import { getCollection } from 'astro:content';
 const blogEntries = await getCollection('blogs');
+const colors = ['blue', 'purple', 'pink', 'red', 'orange', 'black'];
 ---
 
 <Layout title="blog">
-  <div>Hello World</div>
-  <ul>
+  <Navigation />
+  <h1
+    class="text-5xl p-4 text-center font-bold bg-gradient-to-r from-purple via-orange to-blue bg-clip-text text-transparent">
+    A Guide to Adding Gradients with Tailwind CSS
+  </h1><h1
+    class="text-5xl p-4 text-center font-bold bg-gradient-to-r from-orange to-blue">
+    A Guide to Adding Gradients with Tailwind CSS
+  </h1>
+  <h1 class="text-4xl font-bold text-blue">Hello World</h1>
+  <div class="text-3xl font-bold text-white text-stroke text-stroke-black">
+    Hello, World!
+  </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 lg:px-8 xl:px-12">
     {
       blogEntries.map((entry) => {
+        // const fromColor = colors[Math.floor(Math.random() * colors.length)];
+        // const toColor = colors[Math.floor(Math.random() * colors.length)];
+        let fromColor, toColor;
+        do {
+          fromColor = colors[Math.floor(Math.random() * colors.length)];
+          toColor = colors[Math.floor(Math.random() * colors.length)];
+        } while (fromColor === toColor);
+        // const gradientClasses = `bg-gradient-to-r from-${fromColor} to-${toColor}`;
+        const gradientClasses = `bg-gradient-to-r from-${fromColor} to-${toColor}`;
+
         return (
-          <li>
-            <a href={`/posts/${entry.slug}`}>{entry.data.title}</a>
-            <time datetime={entry.data.publishedAt.toISOString()}>
-              {entry.data.publishedAt.toDateString()}
-            </time>
-          </li>
+          <div
+            class={`shadow-lg rounded-lg overflow-hidden ${gradientClasses}`}>
+            <div class="p-6">
+              <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-white uppercase tracking-wide mb-1">
+                {entry.data.title}{' '}
+                <time datetime={entry.data.publishedAt.toISOString()}>
+                  {entry.data.publishedAt.toDateString()}
+                </time>
+              </h2>
+              <div class="mt-4">
+                <a
+                  href={`/posts/${entry.slug}`}
+                  class="text-white text-sm hover:text-gray-300 font-semibold">
+                  Read More →
+                </a>
+              </div>
+            </div>
+          </div>
         );
       })
     }
-  </ul>
+  </div>
 </Layout>

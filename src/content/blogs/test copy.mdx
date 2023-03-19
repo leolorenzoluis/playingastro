@@ -4,6 +4,9 @@ tags: #something
 publishedAt: 2021-04-20T12:58:17Z
 ---
 
+export const published = new Date('2022-02-01');
+
+Published on: {new Intl.DateTimeFormat('en', {dateStyle: 'long'}).format(published)}.
 **Hello World**
 Whatever
 
