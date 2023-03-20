@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 export const prerender = true;
+import { AstroSeo } from '@astrolib/seo';
 import { getCollection } from 'astro:content';
 export async function getStaticPaths({ paginate }) {
   let blogEntries = await getCollection('blogs');
@@ -15,13 +16,47 @@ const colors = ['blue', 'purple', 'pink', 'red', 'orange'];
 const { page } = Astro.props;
 ---
 
+<AstroSeo
+  title={`Blog - ${page.currentPage} of ${page.lastPage}`}
+  description="Sharing my thoughts and ideas about web development, design, and more."
+  canonical="https://www.tbd.com"
+  openGraph={{
+    url: 'https://www.tbd.com',
+    title: 'Open Graph Title',
+    description: 'Open Graph Description',
+    images: [
+      {
+        url: 'https://www.tbd.com/opengraph/social-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Social open graph',
+        type: 'image/jpeg',
+      },
+      {
+        url: 'https://www.tbd.com/opengraph/twitter-og.jpg',
+        width: 4096,
+        height: 4096,
+        alt: 'Twitter open graph',
+        type: 'image/jpeg',
+      },
+      { url: 'https://www.tbd.com/opengraph/social-og.jpg' },
+      { url: 'https://www.tbd.com/opengraph/twitter-og.jpg' },
+    ],
+    site_name: 'YourSitesName',
+  }}
+  twitter={{
+    handle: '@meh',
+    site: '@meh',
+    cardType: 'summary_large_image',
+  }}
+/>
 <!--Display the current page number. Astro.params.page can also be used!-->
 <Layout title="blog">
   <Navigation />
   <div
     class="mt-20 min-h-screen bg-gradient-to-r from-gray-900 to-black h-full">
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 lg:px-8 xl:px-12 my-5 h-full">
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 lg:px-8 xl:px-12 pt-8">
       {
         page.data.map((entry) => {
           // const fromColor = colors[Math.floor(Math.random() * colors.length)];
@@ -44,7 +79,7 @@ const { page } = Astro.props;
           const gradientClasses = `bg-gradient-to-r from-${fromColor} via-${viaColor} to-${toColor}`;
           return (
             <div
-              class={`shadow-lg rounded-lg overflow-hidden ${gradientClasses}`}>
+              class={`shadow-lg rounded-lg overflow-hidden animate__animated animate__zoomIn animate__faster ${gradientClasses}`}>
               <div class="p-6">
                 <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-white uppercase tracking-wide mb-1">
                   {entry.data.title}{' '}
@@ -66,16 +101,18 @@ const { page } = Astro.props;
       }
     </div>
     <div class="flex justify-center items-center mt-8">
-      <div class="flex">
-        <span class="text-red font-medium text-lg sm:text-xl md:text-2xl mr-4">
-          Page {page.currentPage} of {page.lastPage}
-        </span>
+      <div class="flex flex-col md:flex-row">
+        <div class="w-full md:w-auto mb-2 md:mb-0 md:mr-4">
+          <span class="text-white text-lg sm:text-xl md:text-2xl">
+            Page {page.currentPage} of {page.lastPage}
+          </span>
+        </div>
         <!-- Previous Link -->
         {
           page.url.prev ? (
             <a
               href={page.url.prev}
-              class="text-blue font-medium mr-4 text-lg sm:text-xl md:text-2xl">
+              class="text-orange font-medium mr-4 text-lg sm:text-xl md:text-2xl">
               Previous
             </a>
           ) : null
@@ -85,7 +122,7 @@ const { page } = Astro.props;
           page.url.next ? (
             <a
               href={page.url.next}
-              class="text-blue font-medium text-lg sm:text-xl md:text-2xl">
+              class="text-orange font-medium text-lg sm:text-xl md:text-2xl">
               Next
             </a>
           ) : null
