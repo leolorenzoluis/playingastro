@@ -55,6 +55,16 @@ import Rive from '../components/RiveCanvas';
 <Layout title="Welcome to Astro.">
   <Navigation />
   <div class="relative bg-gradient-to-r from-gray-900 to-black">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      class="absolute z-0 w-full h-full object-cover">
+      <source src="astro-640.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-black opacity-95 z-5"></div>
+
     <div
       class="relative h-screen max-w-7xl mx-auto flex flex-col justify-center items-center">
       <h1
@@ -68,7 +78,6 @@ import Rive from '../components/RiveCanvas';
         </p>
       </div>
     </div>
-    <div class="absolute inset-1 bg-gradient-to-r" id="gradient"></div>
   </div>
   <script>
     const words = [
