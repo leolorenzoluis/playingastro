@@ -35,8 +35,31 @@ rightLinks = [];
   <div class="w-full mx-auto md:px-12 px-8 max-w-7xl lg:px-16 text-white">
     <div
       class="relative flex flex-col w-full py-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6">
-      <div class="flex flex-row items-center justify-between lg:justify-start">
-        <a href="/" class="lg:pr-8 inline-flex items-center gap-3">L</a>
+      <div
+        class="flex flex-row items-center justify-between lg:justify-start animate__animated animate__rubberBand">
+        <a href="/" class="lg:pr-8 inline-flex items-center gap-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 150 80"
+            width="150"
+            height="80"
+            class="inline-flex items-center gap-3">
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#415182"></stop>
+                <stop offset="25%" stop-color="#634e7c"></stop>
+                <stop offset="50%" stop-color="#a75d7c"></stop>
+                <stop offset="75%" stop-color="#db6172"></stop>
+                <stop offset="100%" stop-color="#d39674"></stop>
+              </linearGradient>
+            </defs>
+            <text x="50%" y="60%" font-size="50" text-anchor="middle">
+              <tspan fill="url(#gradient)">L</tspan>
+              <tspan fill="url(#gradient)">L</tspan>
+              <tspan fill="url(#gradient)">L</tspan>
+            </text>
+          </svg>
+        </a>
       </div>
       <nav
         class="flex-col items-center flex-grow md:pb-0 md:flex md:justify-end md:flex-row">
