@@ -4,6 +4,7 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 
+  darkMode: 'class', // or 'class'
   safelist: [
     {
       pattern: /^from-/,
@@ -100,6 +101,16 @@ module.exports = {
         screens: "url('/path-to/image.png')",
       }),
       colors: {
+        dark: {
+          primary: '#1A202C',
+          secondary: '#2D3748',
+          accent: '#ECC94B',
+        },
+        light: {
+          primary: '#FFFFFF',
+          secondary: '#F7FAFC',
+          accent: '#4A5568',
+        },
         blue: '#415182',
         purple: '#634e7c',
         pink: '#a75d7c',

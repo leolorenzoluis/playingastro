@@ -1,16 +1,17 @@
 ---
+import Toggle from './ThemeChange';
 const centerLinks = [
   {
     name: 'Blog',
     href: '/blog/1',
     class:
-      'px-2 lg:px-6 py-2 md:px-3 test-sm font-medium text-white hover:text-accent-400 lg:ml-auto',
+      'px-2 md:px-3 lg:px-6 py-2 text-sm font-medium text-black hover:text-accent-400 lg:ml-auto dark:text-white ',
   },
   {
     name: 'About',
     href: '/about',
     class:
-      'px-2 lg:px-6 py-2 md:px-3 test-sm font-medium text-white  hover:text-accent-400 lg:ml-auto',
+      'px-2 md:px-3 lg:px-6 py-2 text-sm font-medium text-black hover:text-accent-400 lg:ml-auto dark:text-white',
   },
 ];
 let rightLinks = [
@@ -31,7 +32,7 @@ rightLinks = [];
 ---
 
 <header
-  class="border-b border-black/5 bg-gradient-to-r from-gray-900 to-black fixed inset-x-0 top-0 z-20">
+  class="border-b border-black/5 bg-gradient-to-r from-white to-white dark:from-gray-900 dark:to-black fixed inset-x-0 top-0 z-20">
   <div class="w-full mx-auto md:px-12 px-8 max-w-7xl lg:px-16 text-white">
     <div
       class="relative flex flex-col w-full py-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6">
@@ -80,6 +81,7 @@ rightLinks = [];
           }
         </div>
       </nav>
+      <Toggle client:only />
     </div>
   </div>
 </header>
