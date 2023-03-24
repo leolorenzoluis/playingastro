@@ -6,7 +6,7 @@ import { AstroSeo } from '@astrolib/seo';
 import { getCollection } from 'astro:content';
 export async function getStaticPaths({ paginate }) {
   let blogEntries = await getCollection('blogs');
-  blogEntries = Array.from({ length: 100 }, () => [...blogEntries]).flat();
+  // blogEntries = Array.from({ length: 100 }, () => [...blogEntries]).flat();
   // Generate pages from our array of astronauts, with 2 to a page
   return paginate(blogEntries, { pageSize: 18 });
 }
@@ -81,19 +81,16 @@ const { page } = Astro.props;
             <div
               class={`shadow-lg rounded-lg overflow-hidden animate__animated animate__zoomIn animate__faster ${gradientClasses}`}>
               <div class="p-6">
-                <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-white uppercase tracking-wide mb-1">
-                  {entry.data.title}{' '}
+                <a
+                  href={`/posts/${entry.slug}`}
+                  class="text-white text-sm hover:text-gray-300 font-semibold">
+                  <h2 class="text-lg sm:text-xl md:text-2xl font-semibold hover:text-gray-300 text-white uppercase tracking-wide mb-1">
+                    {entry.data.title}{' '}
+                  </h2>
                   <time datetime={entry.data.publishedAt.toISOString()}>
                     {entry.data.publishedAt.toDateString()}
                   </time>
-                </h2>
-                <div class="mt-4">
-                  <a
-                    href={`/posts/${entry.slug}`}
-                    class="text-white text-sm hover:text-gray-300 font-semibold">
-                    Read More →
-                  </a>
-                </div>
+                </a>
               </div>
             </div>
           );
