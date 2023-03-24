@@ -35,35 +35,31 @@ rightLinks = [];
   class="border-b border-black/5 bg-gradient-to-r from-white to-white dark:from-gray-900 dark:to-black fixed inset-x-0 top-0 z-20">
   <div class="w-full mx-auto md:px-12 px-8 max-w-7xl lg:px-16 text-white">
     <div
-      class="relative flex flex-col w-full py-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6">
-      <div
-        class="flex flex-row items-center justify-between lg:justify-start animate__animated animate__rubberBand">
-        <a href="/" class="lg:pr-8 flex justify-center items-center gap-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 130 80"
-            width="120"
-            height="40"
-            class="inline-flex items-center gap-3">
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#415182"></stop>
-                <stop offset="25%" stop-color="#634e7c"></stop>
-                <stop offset="50%" stop-color="#a75d7c"></stop>
-                <stop offset="75%" stop-color="#db6172"></stop>
-                <stop offset="100%" stop-color="#d39674"></stop>
-              </linearGradient>
-            </defs>
-            <text x="50%" y="60%" font-size="50" text-anchor="middle">
-              <tspan fill="url(#gradient)">L</tspan>
-              <tspan fill="url(#gradient)">L</tspan>
-              <tspan fill="url(#gradient)">L</tspan>
-            </text>
-          </svg>
-        </a>
-      </div>
-      <nav
-        class="flex-col items-center flex-grow md:pb-0 md:flex md:justify-end md:flex-row">
+      class="flex flex-row items-center justify-between w-full py-5 md:px-6 md:justify-center animate__animated animate__rubberBand">
+      <a href="/" class="lg:pr-8 flex justify-center items-center gap-3">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 130 80"
+          width="120"
+          height="40"
+          class="inline-flex items-center gap-3">
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#415182"></stop>
+              <stop offset="25%" stop-color="#634e7c"></stop>
+              <stop offset="50%" stop-color="#a75d7c"></stop>
+              <stop offset="75%" stop-color="#db6172"></stop>
+              <stop offset="100%" stop-color="#d39674"></stop>
+            </linearGradient>
+          </defs>
+          <text x="50%" y="60%" font-size="50" text-anchor="middle">
+            <tspan fill="url(#gradient)">L</tspan>
+            <tspan fill="url(#gradient)">L</tspan>
+            <tspan fill="url(#gradient)">L</tspan>
+          </text>
+        </svg>
+      </a>
+      <nav class="md:flex md:flex-row md:items-center md:ml-auto">
         {
           centerLinks.map((link) => (
             <a class={link.class} href={link.href}>
@@ -71,17 +67,10 @@ rightLinks = [];
             </a>
           ))
         }
-        <div class="inline-flex items-center gap-2 list-none lg:ml-auto">
-          {
-            rightLinks.map((link) => (
-              <a class={link.class} href={link.href}>
-                {link.name}
-              </a>
-            ))
-          }
-        </div>
       </nav>
-      <Toggle client:only />
+      <div class="md:ml-auto">
+        <Toggle client:only />
+      </div>
     </div>
   </div>
 </header>
