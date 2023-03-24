@@ -84,7 +84,9 @@ const Hero = () => {
       </video>
       <div class="absolute inset-0 bg-black opacity-95 z-5"></div>
       <div class="relative h-screen max-w-7xl mx-auto flex flex-col justify-center items-center">
-        <h1 class="text-4xl lg:text-9xl font-bold text-white sm:text-5xl md:text-6xl z-10 animate__animated animate__zoomIn">
+        <h1
+          content="notranslate"
+          class="notranslate text-4xl lg:text-9xl font-bold text-white sm:text-5xl md:text-6xl z-10 animate__animated animate__zoomIn">
           Leo Lorenzo Luis
         </h1>
         <div class="hero-subtitle-container z-10">
