@@ -92,6 +92,8 @@ const { title } = Astro.props;
           if (response.ok) {
             // Show the thank you message
             thankYouMessage.classList.remove('hidden');
+            // Scroll to the thank you message
+            thankYouMessage.scrollIntoView({ behavior: 'smooth' });
           } else {
             // Error message
             console.error('Failed to subscribe:', response.statusText);
