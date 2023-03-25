@@ -24,19 +24,16 @@ export const post: APIRoute = async ({ request, redirect }) => {
     });
     console.log(response);
     const data = await response.json();
-    // const recordId = data.id;
-    // const emaiResponse = data.fields.Email;
-    // console.log(`New record created with ID ${recordId} and email address ${emaiResponse}.`);
+    const recordId = data.id;
+    const emaiResponse = data.fields.Email;
+    console.log(`New record created with ID ${recordId} and email address ${emaiResponse}.`);
     // Return 200
     return {
         status: 200,
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            KEY: AIRTABLE_API_KEY,
-            BASE_ID
-        }),
+        body: JSON.stringify(data),
     };
 
 }
