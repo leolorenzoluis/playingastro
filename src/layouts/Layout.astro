@@ -44,8 +44,8 @@ const { title } = Astro.props;
         Subscribe to my newsletter
       </h2>
       <p class="text-black dark:text-white mb-4 text-center">
-        Sign up to receive news, updates, and interesting articles about. No
-        spam or ads.
+        Sign up to receive news, updates, and interesting articles. No spam or
+        ads.
       </p>
 
       <form class="flex items-center">
@@ -61,15 +61,22 @@ const { title } = Astro.props;
             <button
               id="subscribe-btn"
               class="bg-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-l focus:outline-none focus:shadow-outline"
-              type="submit">
-              Subscribe
-            </button>
+              type="submit">Subscribe</button
+            >
           </div>
         </div>
       </form>
+
+      <p
+        id="thank-you"
+        class="hidden text-green-500 font-bold text-center mt-4">
+        Thank you for subscribing!
+      </p>
+
       <script>
         const subscribeBtn = document.getElementById('subscribe-btn');
         const emailInput = document.getElementById('email');
+        const thankYouMessage = document.getElementById('thank-you');
 
         subscribeBtn.addEventListener('click', async (event) => {
           event.preventDefault();
@@ -83,8 +90,8 @@ const { title } = Astro.props;
           });
 
           if (response.ok) {
-            // Success message
-            console.log('Successfully subscribed!');
+            // Show the thank you message
+            thankYouMessage.classList.remove('hidden');
           } else {
             // Error message
             console.error('Failed to subscribe:', response.statusText);
