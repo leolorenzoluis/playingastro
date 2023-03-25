@@ -6,8 +6,8 @@ import { APIRoute } from 'astro';
 
 export const post: APIRoute = async ({ request, redirect }) => {
 
-    const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
-    const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
+    const AIRTABLE_API_KEY = 'patrlYYu6cbOweRTU.379b992397fb630454ce7f1c8840a2274cc8168e67cae9775705936992a622c5';
+    const AIRTABLE_BASE_ID = 'appOTZ1nb9sTWxYSA';
     const AIRTABLE_TABLE_NAME = 'Emails';
     const { email } = await request.json();
     const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`, {
