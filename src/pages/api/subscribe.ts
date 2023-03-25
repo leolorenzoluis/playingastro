@@ -4,8 +4,11 @@ import { APIRoute } from 'astro';
 // const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
 
 
-const something: any[] = []
 export const post: APIRoute = async ({ request, redirect }) => {
+
+    const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
+    const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
+    const AIRTABLE_TABLE_NAME = 'Emails';
     const { email } = await request.json();
     const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`, {
         method: 'POST',
@@ -32,7 +35,7 @@ export const post: APIRoute = async ({ request, redirect }) => {
         },
         body: JSON.stringify({
             KEY: AIRTABLE_API_KEY,
-            BASE_ID: AIRTABLE_BASE_ID,
+            BASE_ID
         }),
     };
 
