@@ -35,7 +35,7 @@ export const post: APIRoute = async ({ request, redirect }) => {
         },
         body: JSON.stringify({
             KEY: AIRTABLE_API_KEY,
-            BASE_ID
+            AIRTABLE_BASE_ID
         }),
     };
 
