@@ -37,5 +37,60 @@ const { title } = Astro.props;
   </head>
   <body class="mx-auto bg-white dark:bg-gray-900">
     <slot />
+    <div
+      class="bg-white shadow-md rounded-lg p-6 w-full mx-auto dark:bg-gray-700">
+      <h2
+        class="text-black dark:text-white text-2xl font-medium mb-4 text-center">
+        Subscribe to my newsletter
+      </h2>
+      <p class="text-black dark:text-white mb-4 text-center">
+        Sign up to receive news, updates, and interesting articles about. No
+        spam or ads.
+      </p>
+
+      <form class="flex items-center">
+        <div class="flex-grow mr-4">
+          <div class="flex items-center justify-center">
+            <input
+              class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="email"
+              type="email"
+              placeholder="Enter your email address"
+              required
+            />
+            <button
+              id="subscribe-btn"
+              class="bg-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-l focus:outline-none focus:shadow-outline"
+              type="submit">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </form>
+      <script>
+        const subscribeBtn = document.getElementById('subscribe-btn');
+        const emailInput = document.getElementById('email');
+
+        subscribeBtn.addEventListener('click', async (event) => {
+          event.preventDefault();
+
+          const response = await fetch('/api/subscribe', {
+            method: 'POST',
+            body: JSON.stringify({ email: emailInput.value }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (response.ok) {
+            // Success message
+            console.log('Successfully subscribed!');
+          } else {
+            // Error message
+            console.error('Failed to subscribe:', response.statusText);
+          }
+        });
+      </script>
+    </div>
   </body>
 </html>
