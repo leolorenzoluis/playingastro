@@ -6,6 +6,10 @@ import { AstroSeo } from '@astrolib/seo';
 import { getCollection } from 'astro:content';
 export async function getStaticPaths({ paginate }) {
   let blogEntries = await getCollection('blogs');
+  // Order by date
+  blogEntries = blogEntries.sort((a, b) => {
+    return b.data.publishedAt - a.data.publishedAt;
+  });
   // blogEntries = Array.from({ length: 100 }, () => [...blogEntries]).flat();
   // Generate pages from our array of astronauts, with 2 to a page
   return paginate(blogEntries, { pageSize: 18 });
@@ -88,7 +92,7 @@ const { page } = Astro.props;
                     {entry.data.title}{' '}
                   </h2>
                   <time datetime={entry.data.publishedAt.toISOString()}>
-                    {entry.data.publishedAt.toDateString()}
+                    {entry.data.publishedAt.toLocaleDateString()}
                   </time>
                 </a>
               </div>
