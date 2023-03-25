@@ -33,7 +33,10 @@ export const post: APIRoute = async ({ request, redirect }) => {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+            KEY: AIRTABLE_API_KEY,
+            BASE_ID: AIRTABLE_BASE_ID,
+        }),
     };
 
 }
