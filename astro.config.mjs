@@ -20,7 +20,7 @@ export default defineConfig({
         process.env.AIRTABLE_API_KEY
       ),
       'process.env.AIRTABLE_BASE_ID': JSON.stringify(
-        process.env.SPOTIFY_CLIENAIRTABLE_BASE_IDT_SECRET
+        process.env.AIRTABLE_BASE_ID
       ),
     },
   },
